@@ -1,0 +1,6 @@
+/.gradle/
+/.idea/
+/configs/
+/gradle/wrapper/
+/app/build/
+/local.properties
