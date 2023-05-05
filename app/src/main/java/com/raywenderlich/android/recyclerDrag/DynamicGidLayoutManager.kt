@@ -1,10 +1,5 @@
 package com.raywenderlich.android.recyclerDrag
 
-import android.content.Context
-import androidx.recyclerview.widget.GridLayoutManager
-import com.raywenderlich.android.masky.R
-import com.raywenderlich.android.model.RemoteItem
-
 class DynamicGridLayoutManager {
     //Create a GridLayoutManager with allow to change the span count dynamically, based on RemoteItem attribute name spanCount
 //        fun getDynamicGidLayoutManager(context: Context, adapter: RemoteAdapter) : GridLayoutManager {

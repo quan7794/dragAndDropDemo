@@ -1,4 +1,4 @@
-package com.raywenderlich.android.model
+package com.raywenderlich.android.remoteDemo.model
 
 data class RemoteItem(
     val id: String,

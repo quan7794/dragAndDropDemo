@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.raywenderlich.android.masky">
+    package="com.raywenderlich.android.remoteDemo">
 
     <application
         android:allowBackup="false"
@@ -14,11 +14,15 @@
 
         <!-- Main Activity -->
         <activity
-            android:name=".MainActivity"
+            android:name="com.raywenderlich.android.remoteDemo.MainActivity"
             android:theme="@style/SplashTheme">
         </activity>
 
         <activity android:name="com.raywenderlich.android.recyclerDrag.DragActivity"
+            android:exported="true">
+
+        </activity>
+        <activity android:name="com.raywenderlich.android.animationDemo.AnimationActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

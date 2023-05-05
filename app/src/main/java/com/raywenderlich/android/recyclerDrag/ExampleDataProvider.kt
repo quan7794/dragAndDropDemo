@@ -12,10 +12,10 @@ class ExampleDataProvider : AbstractDataProvider() {
         val atoz = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         mData = LinkedList()
         for (i in 0..1) {
-            for (j in 0 until atoz.length) {
+            for (element in atoz) {
                 val id = mData.size.toLong()
                 val viewType = 0
-                val text = Character.toString(atoz[j])
+                val text = element.toString()
                 val swipeReaction = RecyclerViewSwipeManager.REACTION_CAN_SWIPE_UP or RecyclerViewSwipeManager.REACTION_CAN_SWIPE_DOWN
                 mData.add(ConcreteData(id, viewType, text, swipeReaction))
             }
@@ -34,19 +34,12 @@ class ExampleDataProvider : AbstractDataProvider() {
 
     override fun undoLastRemoval(): Int {
         return if (mLastRemovedData != null) {
-            val insertedPosition: Int
-            insertedPosition = if (mLastRemovedPosition >= 0 && mLastRemovedPosition < mData.size) {
-                mLastRemovedPosition
-            } else {
-                mData.size
-            }
+            val insertedPosition = if (mLastRemovedPosition >= 0 && mLastRemovedPosition < mData.size) mLastRemovedPosition else  mData.size
             mData.add(insertedPosition, mLastRemovedData)
             mLastRemovedData = null
             mLastRemovedPosition = -1
             insertedPosition
-        } else {
-            -1
-        }
+        } else -1
     }
 
     override fun moveItem(fromPosition: Int, toPosition: Int) {

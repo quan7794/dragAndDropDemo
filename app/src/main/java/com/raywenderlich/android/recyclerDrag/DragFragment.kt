@@ -1,11 +1,8 @@
 package com.raywenderlich.android.recyclerDrag
 
-import android.graphics.drawable.NinePatchDrawable
-import android.os.Build
 import android.os.Bundle
 import android.view.*
 import android.widget.CompoundButton
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
@@ -13,10 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.h6ah4i.android.widget.advrecyclerview.animator.DraggableItemAnimator
 import com.h6ah4i.android.widget.advrecyclerview.animator.GeneralItemAnimator
-import com.h6ah4i.android.widget.advrecyclerview.decoration.ItemShadowDecorator
 import com.h6ah4i.android.widget.advrecyclerview.draggable.RecyclerViewDragDropManager
 import com.h6ah4i.android.widget.advrecyclerview.utils.WrapperAdapterUtils
-import com.raywenderlich.android.masky.R
+import com.raywenderlich.android.remoteDemo.R
 
 
 class DragFragment : Fragment() {
@@ -63,23 +59,17 @@ class DragFragment : Fragment() {
         mRecyclerViewDragDropManager!!.dragStartItemAnimationDuration = 250
         mRecyclerViewDragDropManager!!.draggingItemAlpha = 0.8f
         mRecyclerViewDragDropManager!!.draggingItemScale = 1.3f
-        mRecyclerViewDragDropManager!!.draggingItemRotation = 15.0f
+        mRecyclerViewDragDropManager!!.draggingItemRotation = 4.0f
 
         //adapter
         val myItemAdapter = DraggableGridExampleAdapter(dataProvider!!)
         mAdapter = myItemAdapter
         mWrappedAdapter = mRecyclerViewDragDropManager!!.createWrappedAdapter(myItemAdapter) // wrap for dragging
         val animator: GeneralItemAnimator = DraggableItemAnimator() // DraggableItemAnimator is required to make item animations properly.
-        mRecyclerView!!.setLayoutManager(mLayoutManager)
-        mRecyclerView!!.setAdapter(mWrappedAdapter) // requires *wrapped* adapter
-        mRecyclerView!!.setItemAnimator(animator)
+        mRecyclerView!!.layoutManager = mLayoutManager
+        mRecyclerView!!.adapter = mWrappedAdapter // requires *wrapped* adapter
+        mRecyclerView!!.itemAnimator = animator
 
-        // additional decorations
-        if (supportsViewElevation()) {
-            // Lollipop or later has native drop shadow feature. ItemShadowDecorator is not required.
-        } else {
-            mRecyclerView!!.addItemDecoration(ItemShadowDecorator((ContextCompat.getDrawable(requireContext(), R.drawable.material_shadow_z3) as NinePatchDrawable?)!!))
-        }
         mRecyclerViewDragDropManager!!.attachRecyclerView(mRecyclerView!!)
 
         // for debugging
@@ -118,9 +108,7 @@ class DragFragment : Fragment() {
         val menuSwitchItem = menu.findItem(R.id.menu_switch_swap_mode)
         val actionView = menuSwitchItem.actionView.findViewById<CompoundButton>(R.id.switch_view)
         actionView.setOnCheckedChangeListener { buttonView: CompoundButton?, isChecked: Boolean ->
-            updateItemMoveMode(
-                isChecked
-            )
+            updateItemMoveMode(isChecked)
         }
     }
 
@@ -132,9 +120,9 @@ class DragFragment : Fragment() {
     }
 
     private fun supportsViewElevation(): Boolean {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
+        return true
     }
 
-    val dataProvider: AbstractDataProvider?
+    private val dataProvider: AbstractDataProvider?
         get() = (activity as DragActivity?)?.dataProvider
 }

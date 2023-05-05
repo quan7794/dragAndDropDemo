@@ -2,7 +2,7 @@ package com.raywenderlich.android.recyclerDrag
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.raywenderlich.android.masky.R
+import com.raywenderlich.android.remoteDemo.R
 
 
 class DragActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.raywenderlich.android.masky
+package com.raywenderlich.android.remoteDemo
 
 import android.graphics.Canvas
 import android.graphics.Point

@@ -12,7 +12,7 @@ import com.h6ah4i.android.widget.advrecyclerview.draggable.DraggableItemAdapter
 import com.h6ah4i.android.widget.advrecyclerview.draggable.ItemDraggableRange
 import com.h6ah4i.android.widget.advrecyclerview.draggable.RecyclerViewDragDropManager
 import com.h6ah4i.android.widget.advrecyclerview.utils.AbstractDraggableItemViewHolder
-import com.raywenderlich.android.masky.R
+import com.raywenderlich.android.remoteDemo.R
 
 
 internal class DraggableGridExampleAdapter(dataProvider: AbstractDataProvider) : RecyclerView.Adapter<DraggableGridExampleAdapter.MyViewHolder>(),

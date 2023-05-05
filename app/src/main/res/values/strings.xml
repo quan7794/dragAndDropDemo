@@ -1,5 +1,5 @@
 <resources>
-  <string name="app_name">Masky</string>
+  <string name="app_name">Quan\'s Demo</string>
   <string name="draggable_mask_image">Draggable Mask Image</string>
   <string name="unmasked_face">Face drop area for mask to be dragged</string>
 </resources>
